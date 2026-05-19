@@ -2,7 +2,7 @@ import {useState} from 'react'
 import { bannerStyles , customStyles} from '../assets/dummyStyles'
 import { features, floatingIcons } from '../assets/dummyBanner'
 import { CircleCheckBig, Sparkle, X } from 'lucide-react'
-import bannerImg from '../assets/bannerimage.jpg'
+import Banner from '../assets/Bannerimage.jpg'
 import video from '../assets/bannerVideo.mp4'
 const Banner = () => {
 
@@ -74,7 +74,7 @@ const Banner = () => {
               </div>
               
             <div className={bannerStyles.imageContainer}>
-                <img src={bannerImg} alt="Banner" className={bannerStyles.image} />
+                <img src={Banner} alt="Banner" className={bannerStyles.image} />
             </div>
             </div> 
 
