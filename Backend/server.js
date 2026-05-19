@@ -15,7 +15,7 @@ const port = 4000;
 
 // Middlewares 
 app.use(cors({
-        origin: ["https://lms-ed41.vercel.app/"],
+        origin: ["https://lms-ed41.vercel.app"],
         credentials: true,
 }));
 app.use(express.json());
