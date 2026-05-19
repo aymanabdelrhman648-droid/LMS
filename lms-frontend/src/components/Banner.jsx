@@ -3,7 +3,7 @@ import { bannerStyles , customStyles} from '../assets/dummyStyles'
 import { features, floatingIcons } from '../assets/dummyBanner'
 import { CircleCheckBig, Sparkle, X } from 'lucide-react'
 import Bannerimage from '../assets/Bannerimage.jpg'
-import video from '../assets/bannerVideo.mp4'
+import video from '../assets/BannerVideo.mp4'
 const Banner = () => {
 
    const [showVideo, setShowVideo] = useState(false);
