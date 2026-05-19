@@ -1,4 +1,4 @@
-import Bookingmodel from "../models/Bookingmodel.js";
+import Bookingmodel from "../models/BookingModel.js";
 import Stripe from "stripe";
 import dotenv from "dotenv";
 import { v4 as uuidv4 } from "uuid";
