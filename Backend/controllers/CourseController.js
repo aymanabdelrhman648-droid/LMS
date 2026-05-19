@@ -417,29 +417,50 @@ export const ratecourse = async (req, res) => {
   }
 };
 
-export const getmyrating = async(req,res) => {
-       try{ 
-          const {userId} = getAuth(req) || {};
-          if(!userId) return res.status(401).json({
-              success : false,
-              message : "auth required"
-          });
+export const getmyrating = async (req, res) => {
+  try {
+    const { userId } = getAuth(req) || {};
 
-          const {courseid} = req.params;
-          const course = await Course.findbyid(courseid);
-          if(!course) return res.status(404).json({
-                success : false,
-                message : "not found"
-          });
+    if (!userId) {
+      return res.status(401).json({
+        success: false,
+        message: "auth required",
+      });
+    }
 
-          const myrating = (course.ratings || []).find(r => String(r.userId) === String(userId)) || null;
-        return res.json({
-             success : true,
-             myrating : {myrate : myraying.rating , comment : myrating.comment}
-        })
-       }catch (err) {
+    const { courseId } = req.params;
+
+    const course = await Course.findById(courseId);
+
+    if (!course) {
+      return res.status(404).json({
+        success: false,
+        message: "not found",
+      });
+    }
+
+    const myrating =
+      (course.ratings || []).find(
+        (r) => String(r.userId) === String(userId)
+      ) || null;
+
+    return res.json({
+      success: true,
+      myrating: myrating
+        ? {
+            myrate: myrating.rating,
+            comment: myrating.comment,
+          }
+        : null,
+    });
+
+  } catch (err) {
     console.error("getMyRating error:", err);
-    return res.status(500).json({ success: false, message: "Server error" });
-    } 
-}
+
+    return res.status(500).json({
+      success: false,
+      message: "Server error",
+    });
+  }
+};
 
