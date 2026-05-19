@@ -30,7 +30,14 @@ app.use('/api/booking' , bookingRouter);
 // DB
 connectdb();
 
-
+app.use((err, req, res, next) => {
+  console.error("GLOBAL ERROR:", err);
+  res.status(500).json({
+    success: false,
+    message: err.message,
+    stack: err.stack,
+  });
+});
 app.get('/' , (req,res)=>{
     res.send("api work");
 });
