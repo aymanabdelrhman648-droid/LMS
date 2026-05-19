@@ -52,9 +52,20 @@ app.use((err, req, res, next) => {
   });
 });
 
-// DB
-connectdb();
+const startServer = async () => {
+  try {
 
-app.listen(port, () => {
-  console.log(`Server running on port ${port}`);
-});
+    await connectdb();
+
+    app.listen(port, () => {
+      console.log(`Server running on port ${port}`);
+    });
+
+  } catch (error) {
+
+    console.log("Server Start Error:", error);
+
+  }
+};
+
+startServer();
